@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+}
+
+label {
+  color: hsl(186, 14%, 43%);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+input {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+.input-container {
+  background-color: hsl(189, 47%, 97%);
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 0.3rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-container > img {
+  position: absolute;
+  padding-left: 1rem;
+}
+
+.input-container > input {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(183, 100%, 15%);
+  text-align: right;
+  cursor: pointer;
+  /* border: 0; */
+  border-radius: 5px;
+
+  width: inherit;
+  padding-right: 1rem;
+}
+
+.input-container > input:focus {
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid hsl(172, 67%, 45%);
+}
+
+input[type="number"]:hover {
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid hsl(172, 67%, 45%);
+}
+
+.tip-container > button {
+  background-color: hsl(183, 100%, 15%);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 5px 0;
+  text-align: center;
+  border-radius: 0.3rem;
+}
+
+button:hover {
+  background-color: hsl(172, 67%, 45%, 50%);
+  color: hsl(183, 100%, 15%);
+}
+
+.tip-p {
+  font-weight: 600;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.tip-person {
+  color: hsl(185, 41%, 84%);
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.tip-p-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.tip-price {
+  font-size: 2.2rem;
+  color: hsl(172, 67%, 45%);
+  font-weight: 600;
+}
+
+.error-msg {
+  color: orangered;
+  font-weight: 600;
+  text-align: right;
+  display: none;
+}
+
+.sec > div:first-of-type {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
