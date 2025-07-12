@@ -12,17 +12,28 @@ let totalTip = 0;
 let tip4Indv = 0;
 let total4Indv = 0;
 
+//func reset btn to default
+function defaultBtn() {
+  btnPercent.forEach((b) => {
+    b.classList.remove("btnActive");
+    b.classList.add("btnDefault");
+  });
+}
+
 //func to erase error msg
 function clearError() {
   document.querySelector(".bill-error").style.display = "none";
+
   document
     .getElementById("bill")
     .classList.remove("border-red-400", "border-2");
 
   document.querySelector(".ppl-error").style.display = "none";
+
   document
     .getElementById("people")
     .classList.remove("border-red-400", "border-2");
+
   document.querySelector(".custom-err").classList.add("hidden");
   customPercent.classList.remove("border-red-400", "border-2");
 }
@@ -84,6 +95,7 @@ function calculateAmt(percentage) {
   //check for wrong input
   displayError(bill, numOfPeople);
   if (hasError) {
+    defaultBtn();
     return;
   }
 
@@ -99,15 +111,24 @@ btnPercent.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    //making the btn visible for clicks
+    //adding default style to all and removing any active style
+    defaultBtn();
+
+    //adding active style to the btn
+    btn.classList.add("btnActive");
+    btn.classList.remove("btnDefault");
+
+    //making the resetbtn visible for clicks
     resetBtn.classList.remove("opacity-20", "pointer-events-none");
 
     //retrieving the button percentage
     const percentage = Number(btn.value);
-    console.log(percentage);
 
     //continue calculation
     calculateAmt(percentage);
+
+    //clear custom input
+    customPercent.value = "";
   });
 });
 
@@ -132,6 +153,9 @@ customPercent.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     //doing this cos after hitting enter it submits the form as a default and uses the btn value instead
     e.preventDefault();
+    resetBtn.classList.remove("opacity-20", "pointer-events-none");
+
+    defaultBtn();
 
     calculateAmt(percentage);
   }
@@ -141,8 +165,14 @@ customPercent.addEventListener("keydown", (e) => {
 let isClicked = false;
 resetBtn.addEventListener("click", function () {
   isClicked = true;
+  bill = 0;
+  numOfPeople = 0;
+
   if (isClicked) {
+    defaultBtn();
+
     resetBtn.classList.add("opacity-20", "pointer-events-none");
+
     displayResults(0, 0);
     clearError();
   }
